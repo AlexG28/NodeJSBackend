@@ -20,8 +20,9 @@ app.get('/posts', (req,res) => {
     res.send('we are on post');
 })
 
+const mongoURI = require('./mongo');
 //connect to database
-mongoose.connect('mongodb+srv://database1:crazydatabase@maincluster.jnarl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
+mongoose.connect(mongoURI.returnURI(), () => {
     console.log("connected to DB!");
 });
 
