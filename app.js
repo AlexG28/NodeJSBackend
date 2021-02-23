@@ -3,21 +3,19 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-//middleware
-/*
-app.use('/posts', () => {
-    console.log('This is a middleware running');
-});
-*/
+const bodyParser = require('body-parser');
+
+//middlware
+app.use(bodyParser.json());
+
+//import routes
+const postsRoute = require('./routes/posts');
+app.use('/posts', postsRoute);
 
 
 //routes
 app.get('/', (req,res) => {
-    res.send('we are on home');
-})
-
-app.get('/posts', (req,res) => {
-    res.send('we are on post');
+    res.send('we are on Home');
 })
 
 const mongoURI = require('./mongo');
@@ -28,6 +26,3 @@ mongoose.connect(mongoURI.returnURI(), () => {
 
 app.listen(3000);
 
-// username: database1
-// password: crazydatabase
-// mongodb+srv://database1:<password>@maincluster.jnarl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
