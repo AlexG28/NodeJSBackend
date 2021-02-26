@@ -12,11 +12,19 @@ const bodyParser = require('body-parser');
 //middlware
 app.use(bodyParser.json());
 
-
+//THIS DOESN'T WORK 
+/*
 app.get("*", (req,res) =>  {
     res.setHeader("Access-Control-Allow-Origin", "*");
 } );
+*/
 
+app.use((req,res,next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 //import routes
 const postsRoute = require('./routes/posts');
 app.use('/posts', postsRoute);
