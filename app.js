@@ -25,6 +25,7 @@ app.use((req,res,next) => {
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
 //import routes
 const postsRoute = require('./routes/posts');
 app.use('/posts', postsRoute);
