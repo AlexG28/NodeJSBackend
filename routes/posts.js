@@ -13,7 +13,6 @@ router.get('/', async (req,res) => {
     }
 });
 
-
 // submits a post
 router.post('/', async (req,res) => {
     //console.log(req.body);
